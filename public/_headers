@@ -1,0 +1,3 @@
+# Stable filenames: revalidate cached files when revisiting the site.
+/*
+  Cache-Control: no-cache
