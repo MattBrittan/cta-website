@@ -10,6 +10,7 @@
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="contact.js" defer></script>
   </head>
   <body>
     <main>
@@ -17,7 +18,7 @@
       <section class="hero" id="top">
         <header class="site-header">
           <a class="wordmark" href="#top" aria-label="Craigieburn Trapping Alliance home">
-            <span class="wordmark-mark" aria-hidden="true">CTA</span>
+            <img class="wordmark-logo" src="cta-logo.webp" width="320" height="320" alt="" />
             <span>
               Craigieburn
               <small>Trapping Alliance</small>
@@ -27,6 +28,7 @@
             <a href="#about">About</a>
             <a href="#our-work">Our work</a>
             <a href="#get-involved">Get involved</a>
+            <a href="#contact">Contact</a>
           </nav>
           <a
             class="header-action"
@@ -54,10 +56,6 @@
           </a>
         </header>
         <div class="hero-inner" id="content">
-          <p class="status">
-            <span></span>
-            New website coming soon
-          </p>
           <h1>
             Restoring the wild heart of
             <em>Craigieburn.</em>
@@ -358,6 +356,14 @@
             May. New volunteers can learn alongside experienced trappers before taking on a line of
             their own.
           </p>
+          <div class="volunteer-resources">
+            <a
+              href="https://1drv.ms/f/c/d8b52b20b6e79228/IgBdcbMIAF-lQ6hVYHKDtYmmAb1aRSOF4dqypV6iKbVljEo?e=ZitzLf"
+              target="_blank"
+              rel="noreferrer"
+            >Public Volunteer Information <span aria-hidden="true">↗</span></a>
+            <p>Documents of relevance to volunteers are available here.</p>
+          </div>
           <div class="join-actions">
             <a
               class="button button-dark"
@@ -456,6 +462,42 @@
           </a>
         </aside>
       </section>
+      <section class="contact section" id="contact" aria-labelledby="contact-heading">
+        <div class="contact-copy">
+          <p class="kicker">Contact us</p>
+          <h2 id="contact-heading">Let’s talk conservation.</h2>
+          <p>Interested in volunteering, supporting a trap line, or learning more about the Alliance? Send our volunteer team a message.</p>
+        </div>
+        <form id="contact-form" class="contact-form" method="post"
+          action="https://cta-contact.withered-sun-ed37.workers.dev/contact"
+          data-sitekey="0x4AAAAAAEuZowmS-557wDa9" aria-describedby="contact-privacy">
+          <fieldset disabled>
+            <legend class="visually-hidden">Send the CTA team a message</legend>
+            <div class="contact-fields">
+              <label for="contact-name">Your name
+                <input id="contact-name" name="name" autocomplete="name" maxlength="100" required />
+              </label>
+              <label for="contact-email">Your email
+                <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+              </label>
+            </div>
+            <label for="contact-message">Your message
+              <textarea id="contact-message" name="message" rows="6" maxlength="5000" required></textarea>
+            </label>
+            <div class="contact-honeypot" aria-hidden="true" inert>
+              <label for="contact-website">Leave this field empty
+                <input id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+            <p id="contact-privacy" class="contact-privacy">Your details and message will be emailed to the CTA team so we can respond to your enquiry. Please don’t include sensitive personal information.</p>
+            <div id="contact-challenge"></div>
+            <button class="button button-dark" type="submit" disabled>Send message</button>
+          </fieldset>
+          <p id="contact-status" class="contact-status" role="status" aria-live="polite" tabindex="-1"></p>
+          <p id="contact-online" class="contact-privacy" hidden><a href="https://craigieburntrapping.nz/#contact">Open the website to send a message</a>.</p>
+          <noscript><p>Please enable JavaScript to use the contact form, or contact us through <a href="https://www.facebook.com/CraigieburnTrapping/">Facebook</a>.</p></noscript>
+        </form>
+      </section>
       <section class="links-section section" aria-labelledby="useful-links-heading">
         <div>
           <p class="kicker">Useful links</p>
@@ -463,11 +505,26 @@
         </div>
         <div class="link-list">
           <a
-            href="https://www.castlehill.nz/craigieburn-trapping-alliance/"
+            href="https://1drv.ms/f/c/d8b52b20b6e79228/IgBdcbMIAF-lQ6hVYHKDtYmmAb1aRSOF4dqypV6iKbVljEo?e=ZitzLf"
             target="_blank"
             rel="noreferrer"
           >
             <span class="link-number">01</span>
+            <span class="link-copy">
+              <strong>Public Volunteer Information</strong>
+              <small>Documents of relevance to volunteers are available here.</small>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.castlehill.nz/craigieburn-trapping-alliance/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="link-number">02</span>
             <span class="link-copy">
               <strong>About the Alliance</strong>
               <small>Background, coverage and current programme information.</small>
@@ -490,7 +547,7 @@
             </svg>
           </a>
           <a href="https://trap.nz/project/7625662/info" target="_blank" rel="noreferrer">
-            <span class="link-number">02</span>
+            <span class="link-number">03</span>
             <span class="link-copy">
               <strong>Trap.NZ project</strong>
               <small>Visit the Alliance project page on Trap.NZ.</small>
@@ -517,7 +574,7 @@
             target="_blank"
             rel="noreferrer"
           >
-            <span class="link-number">03</span>
+            <span class="link-number">04</span>
             <span class="link-copy">
               <strong>Give a Trap</strong>
               <small>Donate a trap directly to support the project.</small>
@@ -540,7 +597,7 @@
             </svg>
           </a>
           <a href="https://www.craigieburn.co.nz/conservation" target="_blank" rel="noreferrer">
-            <span class="link-number">04</span>
+            <span class="link-number">05</span>
             <span class="link-copy">
               <strong>Craigieburn Valley conservation</strong>
               <small>Local trapping resources and rebait information.</small>
@@ -563,7 +620,7 @@
             </svg>
           </a>
           <a href="https://www.chca.org.nz/" target="_blank" rel="noreferrer">
-            <span class="link-number">05</span>
+            <span class="link-number">06</span>
             <span class="link-copy">
               <strong>Castle Hill community</strong>
               <small>News and information from the Castle Hill Community Association.</small>
@@ -589,13 +646,13 @@
       </section>
       <footer>
         <a class="wordmark footer-wordmark" href="#top" aria-label="Back to top">
-          <span class="wordmark-mark" aria-hidden="true">CTA</span>
+          <img class="wordmark-logo" src="cta-logo.webp" width="320" height="320" alt="" loading="lazy" />
           <span>
             Craigieburn
             <small>Trapping Alliance</small>
           </span>
         </a>
-        <p>Volunteer-led conservation in the Canterbury High Country.</p>
+        <p class="footer-tagline">Volunteer-led conservation in the Canterbury High Country.</p>
         <a
           class="footer-facebook"
           href="https://www.facebook.com/CraigieburnTrapping/"
@@ -620,6 +677,11 @@
             <path d="M7 17 17 7"></path>
           </svg>
         </a>
+        <p class="footer-affiliation">
+          The Craigieburn Trapping Alliance is a subcommittee of the
+          <a href="https://www.enved.org.nz/" target="_blank" rel="noreferrer">Canterbury Environmental Trust</a>
+          (registered charity: CC25048).
+        </p>
       </footer>
     </main>
   </body>

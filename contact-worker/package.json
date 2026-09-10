@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260908.1",
+    "typescript": "7.0.2",
+    "wrangler": "4.130.0"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "types": "wrangler types",
+    "check": "tsc --noEmit",
+    "deploy": "wrangler deploy"
+  }
+}
