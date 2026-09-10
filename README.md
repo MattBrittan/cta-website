@@ -115,10 +115,10 @@ Uploading to this existing project retains its domain and Access configuration.
 Only CTA domains belong to this website's hosting setup. An email address on
 another domain is an Access identity, not authorization to change that domain's DNS.
 
-## Public Volunteer Information
+## Volunteer Information
 
 The Get involved section and Useful links both link to the shared
-[Public Volunteer Information folder on OneDrive](https://1drv.ms/f/c/d8b52b20b6e79228/IgBdcbMIAF-lQ6hVYHKDtYmmAb1aRSOF4dqypV6iKbVljEo?e=ZitzLf).
+[Volunteer Information folder on OneDrive](https://1drv.ms/f/c/d8b52b20b6e79228/IgBdcbMIAF-lQ6hVYHKDtYmmAb1aRSOF4dqypV6iKbVljEo?e=ZitzLf).
 The supplied link gives read-only access. The health and safety agreement is
 already available; trap-line information and other volunteer resources will be added.
 

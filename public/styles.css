@@ -516,6 +516,12 @@ h1 em {
   border-left: 0.25rem solid var(--signal);
 }
 
+@media (min-width: 901px) {
+  .volunteer-resources {
+    margin-bottom: 3rem;
+  }
+}
+
 .volunteer-resources > a {
   color: var(--forest);
   font-size: 1rem;
