@@ -17,7 +17,7 @@
     if (widget !== undefined) window.turnstile.reset(widget);
   };
   // File previews and local HTTP previews never send real email or load production challenges.
-  if (!['craigieburn.nz', 'www.craigieburn.nz', 'craigieburntrapping.nz', 'www.craigieburntrapping.nz', 'craigieburn-trapping.pages.dev'].includes(location.hostname) || location.protocol !== 'https:') {
+  if (!['craigieburn.nz', 'www.craigieburn.nz', 'craigieburntrapping.nz', 'www.craigieburntrapping.nz', 'craigieburn-trapping-7pd.pages.dev'].includes(location.hostname) || location.protocol !== 'https:') {
     announce('This is a preview. Messages can be sent from the online website.');
     document.querySelector('#contact-online').hidden = false;
     return;

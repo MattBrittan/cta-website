@@ -1,0 +1,8 @@
+# CTA logo v2
+
+Created with the built-in image generation tool, editing cta-logo-kea-olive-v1.png. Final asset: cta-logo-kea-olive-v2.png. White background.
+
+## Final prompt
+
+Create v2 of the supplied Craigieburn Trapping Alliance logo by editing ONLY the typography size hierarchy and spacing. Preserve the kea and mountain illustration faithfully: continuous olive-green head and body, subtle neck feathers, dark curved beak, small orange wing accent, sage-green mountains. Preserve the white background, forest-green text colour and existing bold geometric sans-serif font style. User request: "font size - make CTA smaller beneath the mountains and Craigieburn Trapping Alliance the more prominent wording".
+Layout: bird/mountain emblem at top. Immediately beneath mountains, center a SMALL secondary "CTA", approximately one quarter the width of the full wordmark and with a letter height around HALF that of the full organisation name. Below this small CTA, set the full name as the dominant bold wording on two large, well-balanced centered lines: "CRAIGIEBURN" then "TRAPPING ALLIANCE". Both full-name lines must be prominent, heavy-weight and clearly bigger in letter height than CTA. Use a slightly more condensed type treatment if necessary to make TRAPPING ALLIANCE bold and readable across a similar overall width to CRAIGIEBURN. Allocate the vertical space released by reducing CTA to the larger full-name wording and clean breathing room. Exact spelling: C R A I G I E B U R N. No extra words, no 'v2' text, no new graphic elements or rules. Full logo within canvas with generous outer margins, flat clean edges, pure white background, no checkerboard, no mockup.

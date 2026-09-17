@@ -30,24 +30,39 @@ repository root. Deploy the contact Worker separately as described below.
 
 ### Cloudflare account transition
 
-Status as of 10 September 2026: the Alliance's dedicated Cloudflare account,
-`Cta@brittan.nz`, has been set up. Two committee members, **Lou** and **DJ**, have
-been granted access to this account.
+Status as of **15 September 2026**: both domains are active in `Cta@brittan.nz`
+(account `dc873fa1bd89cf800aedb7e5b4e6cda5`). DNS, Pages, Access, Email Routing and
+the contact Worker now run in this account. Committee members **Lou** and **DJ**
+have access. All four Pages custom domains have completed certificate validation.
 
-The domains and website hosting remain in `Cloudflare@brittan.nz` pending their
-planned move to `Cta@brittan.nz` in the week beginning **14 September 2026**.
-The domain move is waiting for the 10-day restriction following registration
-to expire. The hosting move is also planned for that week; the migration is
-not yet complete.
+| Resource | Configuration |
+| --- | --- |
+| Pages project | `craigieburn-trapping` |
+| Pages hostname | [craigieburn-trapping-7pd.pages.dev](https://craigieburn-trapping-7pd.pages.dev) |
+| Production deployment | `c99b0987-f3fa-4c15-95f8-bb6256b69028` |
+| `craigieburn.nz` zone | `0f3783ecb9304ea6a37374250212456f` |
+| `craigieburntrapping.nz` zone | `ce728369a0598ae4a269204ce4982f6c` |
+| Nameservers | `lorna.ns.cloudflare.com`, `major.ns.cloudflare.com` |
+| Zero Trust team | `craigieburn-trapping.cloudflareaccess.com` |
 
-Until the migration is complete, manage the live site in the existing account.
-After the move, update the hosting details and publishing instructions below
-to match the new account's Pages project and confirm the domain and Cloudflare
-Access configuration.
+The apex and WWW CNAMEs point to the new Pages hostname. Email Routing is ready
+on `craigieburn.nz`; the original forwarding destination and `trapping@craigieburn.nz`
+were verified in this account. Cloudflare reported the migration delivery test
+successful with no queued messages or bounces. The contact Worker is enabled.
 
-### Existing hosting configuration
+The old Pages project, domain associations, Access application and Worker remain
+in `Cloudflare@brittan.nz` (`414d77685b8ac23bf8e62fe206b6e40e`) as rollback resources.
+Automatic approval review rejected deleting the old domain associations; no old
+resources were deleted. The local source targets the new account. Do not upload
+it to the old project without restoring that account's contact endpoint, site key
+and allowed hostname. The unrelated `brittan.nz` zone was not changed.
 
-Configuration checked on 6 September 2026 (before the account migration):
+DNSSEC was re-enabled on both destination zones after transfer. Cloudflare still
+reported activation pending at the final check; confirm it reaches **active**.
+
+### Hosting configuration
+
+Configuration updated on 18 September 2026:
 
 | Setting           | Current value                                                                                                      |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -55,53 +70,113 @@ Configuration checked on 6 September 2026 (before the account migration):
 | Pages project     | `craigieburn-trapping`                                                                                             |
 | Deployment method | Direct Upload (manual deployment; no connected Git source)                                                         |
 | Production branch | `main`                                                                                                             |
-| Main domain       | [craigieburntrapping.nz](https://craigieburntrapping.nz)                                                           |
-| Additional domain | [craigieburn.nz](https://craigieburn.nz)                                                                           |
+| Main domain       | [craigieburn.nz](https://craigieburn.nz/)                                                           |
+| Redirect domain   | [craigieburntrapping.nz](https://craigieburntrapping.nz/)                                                                           |
 | WWW domains       | [www.craigieburntrapping.nz](https://www.craigieburntrapping.nz), [www.craigieburn.nz](https://www.craigieburn.nz) |
-| Pages hostname    | [craigieburn-trapping.pages.dev](https://craigieburn-trapping.pages.dev)                                           |
+| Pages hostname    | [craigieburn-trapping-7pd.pages.dev](https://craigieburn-trapping-7pd.pages.dev)                                           |
 
-All four custom domains use the same Pages project with HTTPS.
+All four custom domains use the same Pages project with HTTPS. The alternate
+hostnames redirect permanently to `https://craigieburn.nz/`.
 GitHub stores the source; GitHub Pages is not used for hosting.
 
 Pushing this repository does **not** deploy the site. A separate upload of `public/`
 is required to update production. The contact Worker has its own deployment;
 changing one does not deploy the other.
 
-The Pages dashboard still contains the previous build settings:
-`npm run build`, output `dist/client`, root `craigieburn-trapping-site`.
-These describe the retired framework project and are not used for Direct Upload.
-This repository has no build command; its ready-to-publish directory is `public`.
+The destination project is a Direct Upload project with no framework build.
+Its ready-to-publish directory is `public`.
 
-### Access protection
+### Public website access
 
-Cloudflare Access protects all four custom domains, the main Pages hostname and
-`*.craigieburn-trapping.pages.dev` deployment hostnames. Approved people sign in
-using emailed one-time PINs, with a 24-hour session.
+The website was made publicly accessible on 18 September 2026. All four custom
+domains, the main Pages hostname and deployment hostnames serve the site without
+sign-in. The preferred hostname returns HTTP 200; alternate custom hostnames
+redirect to it. The main Pages hostname and deployment remain publicly accessible.
 
-Manage approved email addresses in Cloudflare Zero Trust, in the Access application
-named **Craigieburn Trapping Alliance**. The allowlist and authentication settings
-are intentionally not stored in this public repository. Access is enforced by
-Cloudflare, not by JavaScript or a password in the HTML.
+The Cloudflare Access application **Craigieburn Trapping Alliance**
+(`8403d73d-9739-41b4-b4ec-6f082eed3603`) has an Everyone / Bypass policy named
+**Public website — no sign-in required** (`4ce2ac29-8b2c-457f-b999-740d0a3ec6c3`).
+This disables the visitor sign-in requirement. The previous approved-volunteer
+policy remains available for rollback but does not restrict visitors while the
+public bypass is enabled. To restore restricted access, remove the public bypass
+policy and verify that unauthenticated requests redirect to sign-in.
 
-The repository and its website content are public even while the hosted website
-requires sign-in. Do not put private material in the source or public assets.
+The separate **CTA certificate validation** application
+(`b95cf070-8639-4b6c-8fad-c76d0c3defe8`) still permits
+`/.well-known/acme-challenge/*` on the four custom domains. It remains compatible
+with public access and preserves certificate validation if sign-in is restored.
+
+The repository and website content are public. Do not put private material in
+source files or public assets. Contact-form Turnstile and rate limiting remain
+in place; the public-access change does not alter Cloudflare account permissions.
+
+### Preferred domain and search discovery
+
+The preferred URL is **https://craigieburn.nz/**. Cloudflare Single Redirect rules
+send `www.craigieburn.nz`, `craigieburntrapping.nz` and
+`www.craigieburntrapping.nz` to that HTTPS hostname with HTTP 301, preserving paths
+and query strings. HTTP requests to the preferred hostname also redirect to HTTPS.
+The `/.well-known/acme-challenge/` prefix is excluded to preserve certificate validation.
+
+The active rules have reference `cta_canonical_https_domain`:
+
+- `craigieburn.nz`: ruleset `767f74707dec492b9730f8fc3e078872`, rule `33601bb7dd7046e6b2225dc0175aee99`.
+- `craigieburntrapping.nz`: ruleset `7aab40da9cd641bb900ea5b905d28c2e`, rule `7f8f381ac86c491285d3927d25a6d04b`.
+
+These rulesets still have their historical migration names. The old temporary
+302 rules remain disabled; keep them disabled during normal updates. The active
+301 rules are Cloudflare configuration, separate from a Pages deployment.
+
+`public/index.html` has a canonical URL, a descriptive search title and description,
+and JSON-LD `WebSite` and `Organization` data. The parent organisation is Canterbury
+Environmental Trust; charity identifier CC25048 belongs to the Trust, not CTA.
+The page body and design are unchanged. The HTML title also appears in browser tabs.
+All copies served on Pages hostnames identify the same canonical URL.
+
+`public/robots.txt` allows crawling and links to `public/sitemap.xml`. The sitemap
+contains the homepage only; page-section anchors are not separate pages. Update
+`lastmod` when the page meaningfully changes and add URLs if real pages are added.
+
+Google Search Console and Bing Webmaster Tools verification/submission are still
+pending. A committee-controlled account should verify the domain (using the DNS
+TXT record supplied by the service), submit `https://craigieburn.nz/sitemap.xml`,
+and request homepage indexing. These files alone do not register the site with
+those services or guarantee indexing.
+
+Open Graph and Twitter Card metadata provide the canonical homepage URL, site name,
+search title and description, NZ English locale, and a large photo preview for
+shared links. The preview reuses `public/trap-in-snow-steven-greig.webp` (2400 ×
+1800, under 1 MB) and includes descriptive image alt text crediting Steven Greig.
+The existing organisation data identifies the CTA logo. No new social account
+handles are asserted, and the visible page and photograph are unchanged.
+
+When changing the title, description or photo, keep the Open Graph and Twitter
+metadata in `public/index.html` consistent. Update image dimensions and alt text
+if the image changes. Sharing services decide how to crop and present the card and
+may cache older previews. Use Facebook's Sharing Debugger to request a fresh scrape
+if needed; published posts are not necessarily refreshed automatically.
 
 ### Publishing an update
 
 1. Preview and review the files in `public/`.
 2. In Cloudflare, select the account currently hosting the site
-   (`Cloudflare@brittan.nz` until the migration is complete), then open
+   (`Cta@brittan.nz`), then open
    **Workers & Pages → craigieburn-trapping**.
 3. Choose **Create a new deployment** and the production environment.
 4. Upload the `public` folder, with `index.html` at the upload root, and deploy.
-5. Confirm the deployment succeeds and check the main domain through Access.
+5. Confirm the deployment succeeds and check the main domain without signing in.
 
 Alternatively, with Node.js/npm available for the optional deployment tool:
 
 ```sh
 npx wrangler login
-npx wrangler pages deploy public --project-name=craigieburn-trapping --branch=main
+CLOUDFLARE_ACCOUNT_ID=dc873fa1bd89cf800aedb7e5b4e6cda5 npx wrangler pages deploy public --project-name=craigieburn-trapping --branch=main
 ```
+
+The current local Wrangler login only has access to the source account. Before
+using these commands, sign in with a user authorised for `Cta@brittan.nz`. Setting
+`CLOUDFLARE_ACCOUNT_ID` alone does not grant access. The initial copy was deployed
+through the connected Cloudflare API using a project-scoped asset upload token.
 
 These commands upload existing files; they do not build the website. Authenticate
 through Cloudflare's login flow. Do not paste tokens into commands or source files.
@@ -111,7 +186,7 @@ Direct Upload projects cannot be switched to native Git integration in place.
 Automatic deployment to the existing project could be added separately using CI
 and secrets stored in the CI provider; no such automation is configured here.
 
-Uploading to this existing project retains its domain and Access configuration.
+Uploading to this existing project retains its domain configuration and public-access policy.
 Only CTA domains belong to this website's hosting setup. An email address on
 another domain is an Access identity, not authorization to change that domain's DNS.
 
@@ -139,17 +214,30 @@ separate from the website form and must be retained during migration.
 
 | Component | Current configuration |
 | --- | --- |
-| Account ID | `414d77685b8ac23bf8e62fe206b6e40e` |
+| Account ID | `dc873fa1bd89cf800aedb7e5b4e6cda5` |
+| Status | Enabled; `CONTACT_ENABLED=true`, Email Routing ready |
 | Worker | `cta-contact` |
-| Form endpoint | `https://cta-contact.withered-sun-ed37.workers.dev/contact` |
-| Recipient | `trapping@craigieburn.nz` |
+| Form endpoint | `https://cta-contact.cta-dc8.workers.dev/contact` |
+| Recipient | Live: `trapping@craigieburn.nz`; prepared: `craigieburntrapping@gmail.com` (verification pending) |
 | Sender | `website@craigieburn.nz` (the existing Email Routing domain) |
 | Reply-To | The visitor's validated email address |
 | Turnstile widget | `CTA contact form`, Managed mode |
-| Public site key | `0x4AAAAAAEuZowmS-557wDa9` |
+| Public site key | `0x4AAAAAAE05wWUM7ZrfoQs1` |
 | Turnstile action | `contact` |
 | Secret | `TURNSTILE_SECRET_KEY`, stored only on the Worker |
 | Rate-limit binding | `CONTACT_LIMIT`, namespace `2026091001`, 5 attempts/minute per IP per Cloudflare location |
+
+### Enquiry recipient change (18 September 2026)
+
+The requested new recipient is `craigieburntrapping@gmail.com`. Cloudflare sent
+its verification email; activation is pending the recipient clicking that link.
+The local Worker configuration and tests are prepared for the new recipient.
+The live Worker still delivers to `trapping@craigieburn.nz` until verification
+and deployment are complete, avoiding failed deliveries during the change.
+Update both `CONTACT_TO` and the restricted `CONTACT_EMAIL.destination_address`
+binding together. Preserve the Turnstile secret and all other Worker settings.
+This change is only for website enquiries; the existing `trapping@craigieburn.nz`
+email forwarding rule is separate.
 
 ### How it works and costs
 
@@ -209,7 +297,7 @@ Deploy `public/` separately using the Pages instructions above. The form endpoin
 and public site key are in `public/index.html`. The exact frontend hostname list
 is in `public/contact.js`; the server list is `ALLOWED_ORIGINS` in the Worker
 configuration. The Turnstile widget allows the two CTA domains and
-`craigieburn-trapping.pages.dev` (including their subdomains), while the Worker
+`craigieburn-trapping-7pd.pages.dev` (including their subdomains), while the Worker
 accepts only the five explicitly configured website origins. Arbitrary preview
 hosts, local servers and `file://` pages cannot send real submissions.
 
@@ -217,9 +305,9 @@ Unit tests stub the challenge service and email binding; they never send email.
 Browser tests should also stub these services, or use an isolated development
 Worker and Cloudflare's official test keys. Never put test keys or a verification
 bypass in production. Test the live form through an allowed HTTPS hostname and
-confirm delivery to the CTA inbox before treating it as fully checked. The existing
-Cloudflare Access sign-in remains in place. A deployment alone does not verify
-that a human can complete the live challenge.
+confirm delivery to the CTA inbox before treating it as fully checked. The site
+is publicly accessible; Turnstile still protects the contact form. A deployment
+alone does not verify that a human can complete the live challenge.
 
 For a temporary shutdown, set `CONTACT_ENABLED` to `false` and redeploy the Worker;
 submissions will fail closed with an unavailable message. Update the configuration
@@ -237,38 +325,28 @@ file as well as any dashboard changes so the next deployment preserves the setti
 - Cloudflare's email API reported the setup test delivered to
   `trapping@craigieburn.nz`, with no queued messages or permanent bounces.
 - A complete human submission through the live Turnstile challenge still needs
-  to be checked by a signed-in website visitor; automated UI tests used stubs.
+  to be checked by a website visitor; automated UI tests used stubs.
 
-### Moving the form to Cta@brittan.nz
+### Migration verification and rollback
 
-The new account ID is `dc873fa1bd89cf800aedb7e5b4e6cda5`. Moving the domains and
-Pages project does **not** automatically move the Worker, verified destinations,
-Turnstile widget, secrets or Email Routing rules.
+The account migration has completed for the website and email configuration:
 
-1. In the new account, recreate the existing forwarding rule for
-   `trapping@craigieburn.nz` and verify its underlying destination. Coordinate Email
-   Routing/DNS changes with the domain move so incoming mail continues to work.
-   Verify `trapping@craigieburn.nz` itself as a destination for free form delivery.
-2. Ensure `craigieburn.nz` is ready for Email Routing in the new account so
-   `website@craigieburn.nz` can be the form sender. Preserve all unrelated DNS and
-   mail settings; do not enable routing on top of another provider's MX records.
-3. Create a new Managed Turnstile widget for the production domains and the new
-   Pages hostname. Copy its **public site key** to `public/index.html` and store
-   its **secret key** as `TURNSTILE_SECRET_KEY` on the new Worker.
-4. Change `account_id` in `contact-worker/wrangler.jsonc`. Recreate the Worker with
-   the restricted `CONTACT_EMAIL` binding and the `CONTACT_LIMIT` rate-limit
-   binding. Choose an unused numeric rate-limit namespace in the new account if
-   `2026091001` already belongs to another application. Deploy on Workers Free.
-5. Replace the form's `action` URL in `public/index.html` with the new Worker URL.
-   Update the frontend host list, `ALLOWED_ORIGINS`, and Turnstile hostnames if the
-   Pages hostname changes. Regenerate types and rerun tests and the dry run.
-6. Deploy the static site to the new Pages project. Preserve/recreate the existing
-   Cloudflare Access protection. Test the contact form on both CTA domains and
-   their WWW hostnames, checking successful delivery, Reply-To, error handling and
-   mobile layout. Check the destination inbox as well as the on-screen result.
-7. Once the new setup works, disable the old form Worker, remove the old widget
-   and secret when no longer needed, and update this README's configuration table.
-   Keep the previous deployment available for rollback until cutover is confirmed.
+- Both destination zones and all four Pages custom domains are active.
+- Migration initially preserved sign-in protection. Public access was enabled
+  on 18 September 2026; all current website hostnames now serve without sign-in.
+- Email Routing is ready. The migration test sent from `website@craigieburn.nz`
+  was reported delivered to `trapping@craigieburn.nz`, with no queue or bounce.
+- The contact Worker is enabled with its restricted email binding, Turnstile
+  secret and rate limit. A deployed invalid submission returned HTTP 400; the
+  nine backend tests passed during migration preparation.
+- A complete human submission through the live Turnstile challenge remains a
+  manual check. The email delivery test is not an end-to-end browser form test.
+- DNSSEC activation was requested and is awaiting confirmation of active status.
+
+The old website resources are retained for rollback and should not be used for
+new deployments. Retirement can be performed separately after the new site and
+inbox have been used successfully. The new Turnstile secret is stored only on the
+new Worker, never in this repository.
 
 ## Files
 
@@ -277,10 +355,13 @@ public/
   index.html                  Website content and inline SVG icons
   styles.css                  Standalone styles, including mobile layouts
   contact.js                  Contact form and on-demand Turnstile integration
+  robots.txt                  Crawler access and sitemap location
+  sitemap.xml                 Canonical page URLs for search discovery
   404.html                    Missing-page response for Cloudflare Pages
   favicon.svg                 Site favicon
   cta-logo.webp               Refined Alliance logo used in the header and footer
-  craigieburn-range.webp       Hero photograph
+  cta-nz-location.svg          Compact green NZ locator above the hero photo credit
+  trap-in-snow-steven-greig.webp  Hero photograph, © Steven Greig
   _headers                    Cache revalidation for stable asset filenames
   third-party-licenses.txt     Lucide and Feather icon licence notices
 ```
@@ -306,10 +387,14 @@ the repository and outside the folder uploaded to Pages.
 
 ## Asset licences
 
-The hero image is a cropped and optimised version of
-[Camp Saddle, Craigieburn Range, New Zealand 14](https://commons.wikimedia.org/wiki/File:Camp_Saddle,_Craigieburn_Range,_New_Zealand_14.jpg)
-by Michal Klajban, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-The page retains visible attribution and a licence link.
+The hero photograph, `public/trap-in-snow-steven-greig.webp`, is © Steven Greig.
+It was supplied for this website as `trap_in_snow_Steven_Greig.JPG` and optimised
+for web delivery. Keep the visible copyright credit; no Creative Commons licence
+is granted for this photograph.
+
+The NZ location map uses public-domain Natural Earth 1:50m coastline data. Its
+marker is an approximate locator for the Castle Hill Basin, not a trap location or
+project boundary. Source details and editable artwork are in `output/maps/`.
 
 The inline icons come from [Lucide](https://lucide.dev). Their ISC licence and the
 MIT notice for icons inherited from Feather are included in

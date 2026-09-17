@@ -7,7 +7,7 @@ const valid = { name: 'Test volunteer', email: 'volunteer@example.org', message:
 async function run(data = valid, options = {}) {
   const calls = { sent: [], verified: 0 };
   const env = {
-    CONTACT_ENABLED: 'true', CONTACT_TO: 'trapping@craigieburn.nz', CONTACT_FROM: 'website@craigieburn.nz',
+    CONTACT_ENABLED: 'true', CONTACT_TO: 'craigieburntrapping@gmail.com', CONTACT_FROM: 'website@craigieburn.nz',
     ALLOWED_ORIGINS: origin, TURNSTILE_SECRET_KEY: 'unit-test-secret',
     CONTACT_LIMIT: { limit: async () => ({ success: !options.limited }) },
     CONTACT_EMAIL: { send: async message => { if (options.sendFails) throw new Error('Rejected'); calls.sent.push(message); } },
@@ -36,7 +36,7 @@ async function run(data = valid, options = {}) {
 test('valid enquiry sends only to the configured recipient, preserving Unicode and reply address', async () => {
   const {response,calls,body} = await run({...valid,to:'attacker@example.org',from:'spoof@example.org'});
   assert.equal(response.status,200); assert.equal(body.ok,true); assert.equal(calls.sent.length,1);
-  assert.equal(calls.sent[0].to,'trapping@craigieburn.nz'); assert.equal(calls.sent[0].from.email,'website@craigieburn.nz');
+  assert.equal(calls.sent[0].to,'craigieburntrapping@gmail.com'); assert.equal(calls.sent[0].from.email,'website@craigieburn.nz');
   assert.equal(calls.sent[0].replyTo, valid.email); assert.ok(calls.sent[0].text.includes(valid.message));
   assert.equal(response.headers.get('Access-Control-Allow-Origin'),origin);
 });

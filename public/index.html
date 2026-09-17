@@ -3,11 +3,78 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Craigieburn Trapping Alliance</title>
+    <title>Craigieburn Trapping Alliance | Castle Hill Basin</title>
     <meta
       name="description"
-      content="Volunteer-led predator control protecting native wildlife across the Castle Hill Basin and Craigieburn Range."
+      content="Restoring birdsong through volunteer predator control in the Castle Hill Basin and Craigieburn Range. Discover our work, volunteer or donate a trap."
     />
+    <link rel="canonical" href="https://craigieburn.nz/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_NZ" />
+    <meta property="og:site_name" content="Craigieburn Trapping Alliance" />
+    <meta property="og:title" content="Craigieburn Trapping Alliance | Castle Hill Basin" />
+    <meta property="og:description" content="Restoring birdsong through volunteer predator control in the Castle Hill Basin and Craigieburn Range. Discover our work, volunteer or donate a trap." />
+    <meta property="og:url" content="https://craigieburn.nz/" />
+    <meta property="og:image" content="https://craigieburn.nz/trap-in-snow-steven-greig.webp" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1800" />
+    <meta property="og:image:alt" content="A predator trap in snow beneath the Craigieburn Range, Canterbury, New Zealand. Photo: © Steven Greig." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Craigieburn Trapping Alliance | Castle Hill Basin" />
+    <meta name="twitter:description" content="Restoring birdsong through volunteer predator control in the Castle Hill Basin and Craigieburn Range. Discover our work, volunteer or donate a trap." />
+    <meta name="twitter:image" content="https://craigieburn.nz/trap-in-snow-steven-greig.webp" />
+    <meta name="twitter:image:alt" content="A predator trap in snow beneath the Craigieburn Range, Canterbury, New Zealand. Photo: © Steven Greig." />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://craigieburn.nz/#website",
+            "url": "https://craigieburn.nz/",
+            "name": "Craigieburn Trapping Alliance",
+            "alternateName": "CTA",
+            "inLanguage": "en-NZ",
+            "publisher": {
+              "@id": "https://craigieburn.nz/#organisation"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://craigieburn.nz/#organisation",
+            "name": "Craigieburn Trapping Alliance",
+            "alternateName": "CTA",
+            "url": "https://craigieburn.nz/",
+            "description": "A volunteer-led alliance restoring birdsong through predator control across the Castle Hill Basin and Craigieburn Range, Canterbury, New Zealand. A subcommittee of the Canterbury Environmental Trust.",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://craigieburn.nz/cta-logo.webp",
+              "width": 320,
+              "height": 320
+            },
+            "sameAs": [
+              "https://www.facebook.com/CraigieburnTrapping/"
+            ],
+            "areaServed": {
+              "@type": "Place",
+              "name": "Castle Hill Basin and Craigieburn Range, Canterbury, New Zealand"
+            },
+            "parentOrganization": {
+              "@type": "Organization",
+              "@id": "https://www.enved.org.nz/#organisation",
+              "name": "Canterbury Environmental Trust",
+              "url": "https://www.enved.org.nz/",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "New Zealand charity registration number",
+                "value": "CC25048"
+              }
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <script src="contact.js" defer></script>
@@ -57,7 +124,7 @@
         </header>
         <div class="hero-inner" id="content">
           <h1>
-            Restoring the wild heart of
+            Restoring the birdsong to
             <em>Craigieburn.</em>
           </h1>
           <p class="hero-intro">
@@ -134,24 +201,14 @@
             <path d="m19 12-7 7-7-7"></path>
           </svg>
         </a>
-        <p class="hero-credit">
-          Photo:
-          <a
-            href="https://commons.wikimedia.org/wiki/File:Camp_Saddle,_Craigieburn_Range,_New_Zealand_14.jpg"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Michal Klajban
-          </a>
-          , cropped,
-          <a
-            href="https://creativecommons.org/licenses/by-sa/4.0/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            CC BY-SA 4.0
-          </a>
-        </p>
+        <img
+          class="hero-location"
+          src="cta-nz-location.svg"
+          width="250"
+          height="350"
+          alt="Map of New Zealand marking Craigieburn in the Castle Hill Basin, Canterbury."
+        />
+        <p class="hero-credit">Photo: © Steven Greig</p>
       </section>
       <section class="facts" aria-label="Alliance at a glance">
         <p>Community conservation at landscape scale</p>
@@ -469,8 +526,8 @@
           <p>Interested in volunteering, supporting a trap line, or learning more about the Alliance? Send our volunteer team a message.</p>
         </div>
         <form id="contact-form" class="contact-form" method="post"
-          action="https://cta-contact.withered-sun-ed37.workers.dev/contact"
-          data-sitekey="0x4AAAAAAEuZowmS-557wDa9" aria-describedby="contact-privacy">
+          action="https://cta-contact.cta-dc8.workers.dev/contact"
+          data-sitekey="0x4AAAAAAE05wWUM7ZrfoQs1" aria-describedby="contact-privacy">
           <fieldset disabled>
             <legend class="visually-hidden">Send the CTA team a message</legend>
             <div class="contact-fields">
@@ -596,8 +653,19 @@
               <path d="M7 17 17 7"></path>
             </svg>
           </a>
-          <a href="https://www.craigieburn.co.nz/conservation" target="_blank" rel="noreferrer">
+          <a href="https://www.craigieburnbasin.com/" target="_blank" rel="noreferrer">
             <span class="link-number">05</span>
+            <span class="link-copy">
+              <strong>Craigieburn Basin Restoration Trust</strong>
+              <small>A wider focus on restoring native biodiversity across the Craigieburn Basin, including native vegetation, wildlife, water and soil health.</small>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+          <a href="https://www.craigieburn.co.nz/conservation" target="_blank" rel="noreferrer">
+            <span class="link-number">06</span>
             <span class="link-copy">
               <strong>Craigieburn Valley Ski Area Conservation</strong>
               <small>Information about Craigieburn skifield conservation efforts, including predator trapping and volunteer resources.</small>
@@ -620,7 +688,7 @@
             </svg>
           </a>
           <a href="https://www.chca.org.nz/" target="_blank" rel="noreferrer">
-            <span class="link-number">06</span>
+            <span class="link-number">07</span>
             <span class="link-copy">
               <strong>Castle Hill community</strong>
               <small>News and information from the Castle Hill Community Association.</small>
@@ -643,7 +711,7 @@
             </svg>
           </a>
           <a href="https://www.craigieburntrails.org.nz/" target="_blank" rel="noreferrer">
-            <span class="link-number">07</span>
+            <span class="link-number">08</span>
             <span class="link-copy">
               <strong>Craigieburn Trails</strong>
               <small>Developing a network of dual-use mountain biking and tramping tracks, and supporting our work.</small>
@@ -654,21 +722,10 @@
             </svg>
           </a>
           <a href="https://www.castlehill.nz/" target="_blank" rel="noreferrer">
-            <span class="link-number">08</span>
+            <span class="link-number">09</span>
             <span class="link-copy">
               <strong>Castle Hill Basin</strong>
               <small>Information on the Castle Hill Basin area, weather and webcams.</small>
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M7 7h10v10"></path>
-              <path d="M7 17 17 7"></path>
-            </svg>
-          </a>
-          <a href="https://www.craigieburnbasin.com/" target="_blank" rel="noreferrer">
-            <span class="link-number">09</span>
-            <span class="link-copy">
-              <strong>Craigieburn Basin Restoration Trust</strong>
-              <small>A wider focus on restoring native biodiversity across the Craigieburn Basin, including native vegetation, wildlife, water and soil health.</small>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M7 7h10v10"></path>
