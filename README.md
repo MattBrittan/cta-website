@@ -218,7 +218,7 @@ separate from the website form and must be retained during migration.
 | Status | Enabled; `CONTACT_ENABLED=true`, Email Routing ready |
 | Worker | `cta-contact` |
 | Form endpoint | `https://cta-contact.cta-dc8.workers.dev/contact` |
-| Recipient | Live: `trapping@craigieburn.nz`; prepared: `craigieburntrapping@gmail.com` (verification pending) |
+| Recipient | `craigieburntrapping@gmail.com` (verified) |
 | Sender | `website@craigieburn.nz` (the existing Email Routing domain) |
 | Reply-To | The visitor's validated email address |
 | Turnstile widget | `CTA contact form`, Managed mode |
@@ -229,11 +229,12 @@ separate from the website form and must be retained during migration.
 
 ### Enquiry recipient change (18 September 2026)
 
-The requested new recipient is `craigieburntrapping@gmail.com`. Cloudflare sent
-its verification email; activation is pending the recipient clicking that link.
-The local Worker configuration and tests are prepared for the new recipient.
-The live Worker still delivers to `trapping@craigieburn.nz` until verification
-and deployment are complete, avoiding failed deliveries during the change.
+The recipient is now `craigieburntrapping@gmail.com`, verified by Cloudflare on
+18 September 2026. The live Worker was deployed with both the recipient variable
+and restricted email binding set to this address. Readback confirmed that the
+Turnstile secret and all other bindings were preserved. The existing contact tests
+passed with the new recipient. Worker deployment: `25bf25a129604bcf9f047e840c1b578f`.
+Actual inbox receipt through a human form submission remains a manual check.
 Update both `CONTACT_TO` and the restricted `CONTACT_EMAIL.destination_address`
 binding together. Preserve the Turnstile secret and all other Worker settings.
 This change is only for website enquiries; the existing `trapping@craigieburn.nz`
