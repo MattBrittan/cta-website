@@ -26,6 +26,20 @@ with JavaScript disabled; the contact form requires JavaScript. File and local H
 previews deliberately disable form submission. Upload only `public/`, never the
 repository root. Deploy the contact Worker separately as described below.
 
+## Supporter acknowledgement
+
+The section above the footer thanks SDC (Selwyn District Council), PFNZ
+(Predator Free NZ Trust), and CHET (Coleridge Habitat Enhancement Trust).
+The logos are stored locally in `public/supporters/` and link to each organisation.
+Original artwork and proportions are retained. Sources retrieved on 10 October 2026:
+
+- SDC: [official website logo](https://www.selwyn.govt.nz/resources/images/system-and-icons/selwyn-logo.svg).
+- PFNZ: [official website logo](https://predatorfreenz.org/wp-content/uploads/2023/04/PFNZ_LOGO_BLACK.png).
+- CHET: [official profile logo](https://www.lakecoleridge.co.nz/uploads/9/0/4/8/90486139/coleridgehetrust-col-logo-long_orig.png).
+
+These logos remain the property of their respective organisations and are used
+to acknowledge their support, not covered by the site's icon licence.
+
 ## Current hosting
 
 ### Cloudflare account transition

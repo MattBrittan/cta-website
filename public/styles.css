@@ -666,6 +666,63 @@ h1 em {
   font-size: 0.76rem;
 }
 
+.supporters {
+  padding: clamp(3rem, 6vw, 5rem) max(2rem, calc((100% - var(--max)) / 2));
+  background: var(--white);
+  text-align: center;
+}
+
+.supporters h2 {
+  margin: 0 0 2.5rem;
+  color: var(--forest-deep);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.supporter-logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.supporter-logos a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 7rem;
+  padding: 1rem;
+}
+
+.supporter-logos a:focus-visible {
+  outline: 3px solid var(--forest);
+  outline-offset: 4px;
+}
+
+.supporter-logos img {
+  display: block;
+  width: 100%;
+  max-width: 16rem;
+  height: auto;
+}
+
+.supporter-logos .supporter-logo-chet {
+  max-width: 21rem;
+}
+
+@media (max-width: 620px) {
+  .supporters {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .supporter-logos {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 footer {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
