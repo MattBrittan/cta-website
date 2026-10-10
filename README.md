@@ -40,6 +40,12 @@ Original artwork and proportions are retained. Sources retrieved on 10 October 2
 These logos remain the property of their respective organisations and are used
 to acknowledge their support, not covered by the site's icon licence.
 
+Published on 10 October 2026 to the existing CTA Cloudflare Pages project using
+the dashboard's production Direct Upload. Deployment:
+`694b6479-5aaf-4883-8d2b-2a5754cde881`, from source commit
+`67c4879c1791358548dce4bda1df3ef02b4de349`. Verified the acknowledgement and all
+three logo images on `https://craigieburn.nz/#supporters`.
+
 ## Current hosting
 
 ### Cloudflare account transition
